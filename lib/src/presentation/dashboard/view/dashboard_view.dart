@@ -8,6 +8,7 @@ class DashboardView extends StackedView<ShowDashboardViewModel> {
   @override
   Widget builder(
       BuildContext context, ShowDashboardViewModel viewModel, Widget? child) {
+    viewModel.loadAvocadoCSV();
     return const Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
