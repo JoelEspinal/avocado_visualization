@@ -8,27 +8,28 @@ class DashboardView extends StackedView<ShowDashboardViewModel> {
   @override
   Widget builder(
       BuildContext context, ShowDashboardViewModel viewModel, Widget? child) {
-    viewModel.loadAvocadoCSV();
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 180,
-                width: 300,
-                child: Card(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 4.0,
-                    vertical: 8.0,
-                  ),
-                  color: Colors.lightBlueAccent,
-                  elevation: 5,
-                  child: Text(""),
+          child: viewModel.loading
+              ? const CircularProgressIndicator(color: Colors.black)
+              : const Column(
+                  children: [
+                    SizedBox(
+                      height: 180,
+                      width: 300,
+                      child: Card(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 4.0,
+                          vertical: 8.0,
+                        ),
+                        color: Colors.lightBlueAccent,
+                        elevation: 5,
+                        child: Text(""),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
         ),
       ),
     );
@@ -36,6 +37,9 @@ class DashboardView extends StackedView<ShowDashboardViewModel> {
 
   @override
   ShowDashboardViewModel viewModelBuilder(BuildContext context) {
-    return ShowDashboardViewModel();
+    final viewModel = ShowDashboardViewModel();
+    viewModel.loadAvocadoCSV();
+
+    return viewModel;
   }
 }
