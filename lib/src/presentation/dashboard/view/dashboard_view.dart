@@ -2,6 +2,8 @@ import 'package:avocato_visualization/src/presentation/dashboard/show_dashboard_
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import 'export_linear_cart.dart';
+
 class DashboardView extends StackedView<ShowDashboardViewModel> {
   const DashboardView({super.key});
 
@@ -23,9 +25,10 @@ class DashboardView extends StackedView<ShowDashboardViewModel> {
                           horizontal: 4.0,
                           vertical: 8.0,
                         ),
-                        color: Colors.lightBlueAccent,
+                        shadowColor: Colors.white,
+                        color: Colors.black54,
                         elevation: 5,
-                        child: Text(""),
+                        child: ExportLinearChart(),
                       ),
                     ),
                   ],
